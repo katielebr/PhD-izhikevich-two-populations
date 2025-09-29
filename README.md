@@ -1,4 +1,4 @@
-# PhD-izhikevich-two-populations
+# Izhikevich Two-Population Cortical Model
 
 This repository contains code originally created by Fernanda Selingardi Matias and later modified by Katiele Valéria Pereira Brito as part of her PhD research. The simulator models two neuron populations representing cortical areas, using the Izhikevich neuron model.
 
