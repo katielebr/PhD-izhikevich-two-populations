@@ -6,3 +6,13 @@ The current implementation connects the two populations unidirectionally. Within
 
 The code outputs the time evolution of the mean membrane potential for each population and provides analysis utilities for these signals, including measures of variability across excitatory and inhibitory neurons.
 
+
+
+A computational neuroscience simulator modeling two cortical populations using Izhikevich neurons with unidirectional connectivity.
+
+## 🧠 Model Overview
+
+- **Neuronal Model**: Izhikevich
+- **Synaptic Models**: AMPA (excitatory) and GABA_A (inhibitory)
+- **Connectivity**: Unidirectional between populations coupled in a Sender-Receiver configuration 
+- **Populations**: Two cortical areas, each population consists of $500$ neurons, with $80\%$ being excitatory and $20\%$ inhibitory.
