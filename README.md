@@ -79,17 +79,17 @@ Each neuron receives external **Poisson** input. Dynamics are integrated with th
 ```
 PhD-izhikevich-two-populations/
     src/                           # Source files
-        InitialConditions.c
-        Connectivity.c
-        TimeIteration.c
-        SynapticFunctions.c
-        Integration.c
-        SpikeFunctions.c
-        DataAnalysis.c
+        InitialConditions.c        # Set initial neuronal states
+        Connectivity.c             # Network connectivity
+        TimeIteration.c            # Simulation loop
+        SynapticFunctions.c        # Synaptic currents
+        Integration.c              # ODE integration
+        SpikeFunctions.c           # Spike detection & reset
+        DataAnalysis.c             # Post-processing
     include/                       # Header files
-        constants.h
-        functions.h
-        globals.h
+        constants.h                # Model parameters
+        functions.h                # Function declarations
+        globals.h                  # Global variables
     main.c                         # Main program entry point
     LICENSE                        # MIT License
     .gitignore                     # Git ignore rules
