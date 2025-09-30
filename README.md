@@ -128,8 +128,8 @@ Example:
 time ./saida.out 0.5 0.0 3.5 0.5 53408123 2.00 0.00
 ```
 
-##🔧 Customizing Neuron Types
-**Location: src/InitialConditions.c - Receiver Population Setup**
+## 🔧 Customizing Neuron Types
+**Location**: src/InitialConditions.c - Receiver Population Setup
 ```bash
 for (ii = 0; ii < n1; ii++) {
     // [...] initialization code
@@ -216,4 +216,5 @@ This code accompanies the following research article:
 ## 👥 Authors
 
 Fernanda Selingardi Matias - Original implementation (2012)
+
 Katiele Valéria Pereira Brito - Modifications and extensions (2022)
