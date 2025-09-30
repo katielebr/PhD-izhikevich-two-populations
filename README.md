@@ -75,9 +75,25 @@ Each neuron receives external **Poisson** input. Dynamics are integrated with th
 
 ## 🗂️ Project Structure
 
-├── src/ # Source files (.c)
-├── include/ # Header files (.h)
-└──  main.c # Main program
+Izhikevich-TwoPopulation-Model/
+├── src/                   # Source files
+│   ├── InitialConditions.c
+│   ├── Connectivity.c
+│   ├── TimeIteration.c
+│   ├── SynapticFunctions.c
+│   ├── Integration.c
+│   ├── SpikeFunctions.c
+│   └── DataAnalysis.c
+├── include/               # Header files
+│   ├── constants.h
+│   ├── functions.h
+│   └── globals.h
+├── main.c                 # Main program entry point
+├── LICENSE                # MIT License
+└── README.md             # Documentation
+
+## 📎 Dependencies
+- **Numerical Recipes** - `ran2` function for pseudo-random number generation.
 
 ## 📋 Input Parameters
 
@@ -92,38 +108,46 @@ Each neuron receives external **Poisson** input. Dynamics are integrated with th
 | `Xi` | Inhibitory heterogeneity scale | -0.04 to 0.04 |
 
 ## 🎮 How to Run
-# 1. Compile the simulator
+### 1. Compile the simulator
 The code can be compiled using the g++ compiler. In the terminal, run:
+
 ```bash
 g++ -I./include -lm main.c src/*.c -o saida.out
+```
 
-# 2. Execute with parameters
-After compilation, the simulation is run with:
+### 2. Execute with parameters
+After compilation, the simulation is r'un with:
+
 ```bash
-time ./saida.out gEpoisson Iext gI1 gEext01 semente X Xi
-
+time ./saida.out gEpoisson Iext gI1 gEext01 seed X Xi
+```
 Example:
+
 ```bash
 time ./saida.out 0.5 0.0 3.5 0.5 53408123 2.00 0.00
+```
 
-
-🚀 Quick Execution
-1. 📦 Compile the Simulator
-bash
-g++ -I./include -lm main.c src/*.c -o saida.out
-2. 🎯 Run with Parameters
-bash
-time ./saida.out gEpoisson Iext gI1 gEext01 semente X Xi
-3. 🧪 Example Run
-bash
-time ./saida.out 0.5 0.0 3.5 0.5 53408123 2.00 0.00
+## 📄 License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 
 ## 📚 References 
 [1] E. M. Izhikevich (2003). *Simple model of spiking neurons*. IEEE Transactions on Neural Networks, 14(6), 1569–1572.
 
+To use this code, please cite one of the references below:
 
-👥 Authors
+```bibtex
+@article{brito2025role,
+  title={The role of inhibitory neuronal variability in modulating phase diversity between coupled networks},
+  author={Brito, Katiele VP and Silva, Joana MGL and Mirasso, Claudio R and Matias, Fernanda S},
+  journal={Chaos: An Interdisciplinary Journal of Nonlinear Science},
+  volume={35},
+  number={9},
+  year={2025},
+  publisher={AIP Publishing}
+}
+
+## 👥 Authors
 
 Fernanda Selingardi Matias - Original implementation (2012)
 
