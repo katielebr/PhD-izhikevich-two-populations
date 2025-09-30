@@ -146,7 +146,7 @@ To use this code, please cite one of the references below:
   year={2025},
   publisher={AIP Publishing}
 }
-
+```
 ## 👥 Authors
 
 Fernanda Selingardi Matias - Original implementation (2012)
