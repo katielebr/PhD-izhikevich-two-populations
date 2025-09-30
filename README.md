@@ -13,11 +13,11 @@ The code outputs the time evolution of the **mean membrane potential** for each 
 The model is composed by two cortical populations in a Sender–Receiver configuration. Each population contains 500 neurons, with $80\%$ excitatory and $20\%$ inhibitory. All neurons follow the standard Izhikevich dynamics [1]:
 
 $$
-\frac{dv}{dt} = 0.04v^2 + 5v + 140 - u + I_{\text{total}}, \qquad
+\frac{dv}{dt} = 0.04v^2 + 5v + 140 - u + I_{\text{x}}, \qquad
 \frac{du}{dt} = a(bv - u).
 $$
 
-Here, $v$ is the membrane potential, $u$ is a recovery variable (capturing $K^+$ activation and $Na^+$ inactivation), and $I_{\text{total}}$ aggregates synaptic and external inputs. When $v \ge 30~\text{mV}$, the reset is applied:
+Here, $v$ is the membrane potential, $u$ is a recovery variable (capturing $K^+$ activation and $Na^+$ inactivation), and $I_{\text{x}}$ aggregates synaptic and external inputs. When $v \ge 30~\text{mV}$, the reset is applied:
 
 $$
 v \leftarrow c, \qquad u \leftarrow u + d.
