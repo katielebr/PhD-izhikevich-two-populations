@@ -67,12 +67,64 @@ $\sigma^2$ controls the variance of the heterogeneity; $X_i$ and $X_e$ set the h
 
 ### Synaptic coupling
 
-Across populations, coupling is mediated by **$AMPA$** (excitatory) conductance $g_E$.  
-Within each population, synapses are **$AMPA$** onto excitatory neurons and **$GABA\_A$** onto inhibitory neurons; inhibitory control in the receiver is governed by synaptic conductance $g_I$.
+Across populations, coupling is mediated by **$AMPA$** (excitatory) conductance $g_E$. Within each population, synapses are **$AMPA$** onto excitatory neurons and **$GABA\_A$** onto inhibitory neurons; inhibitory control in the receiver is governed by synaptic conductance $g_I$.
 
 ### External drive and numerical scheme
 
 Each neuron receives external **Poisson** input. Dynamics are integrated with the **explicit Euler** method using a fixed step of $\Delta t = 0.05~\text{ms}$.
 
-**Reference**  
+## 🗂️ Project Structure
+
+├── src/ # Source files (.c)
+├── include/ # Header files (.h)
+└──  main.c # Main program
+
+## 📋 Input Parameters
+
+| Parameter | Description | Range |
+|-----------|-------------|-------|
+| `gEpoisson` | Poisson input conductance | 0.0 - 1.0 |
+| `Iext` | External current | 0.0 |
+| `gI1` | Inhibitory conductance (receiver) | 0.5 - 9.0 |
+| `gEext01` | Sender→Receiver excitatory conductance | 0.0 - 0.5 |
+| `seed` | Random number generator seed | integer |
+| `X` | Excitatory heterogeneity scale | -5.0 to 10.0 |
+| `Xi` | Inhibitory heterogeneity scale | -0.04 to 0.04 |
+
+## 🎮 How to Run
+# 1. Compile the simulator
+The code can be compiled using the g++ compiler. In the terminal, run:
+```bash
+g++ -I./include -lm main.c src/*.c -o saida.out
+
+# 2. Execute with parameters
+After compilation, the simulation is run with:
+```bash
+time ./saida.out gEpoisson Iext gI1 gEext01 semente X Xi
+
+Example:
+```bash
+time ./saida.out 0.5 0.0 3.5 0.5 53408123 2.00 0.00
+
+
+🚀 Quick Execution
+1. 📦 Compile the Simulator
+bash
+g++ -I./include -lm main.c src/*.c -o saida.out
+2. 🎯 Run with Parameters
+bash
+time ./saida.out gEpoisson Iext gI1 gEext01 semente X Xi
+3. 🧪 Example Run
+bash
+time ./saida.out 0.5 0.0 3.5 0.5 53408123 2.00 0.00
+
+
+## 📚 References 
 [1] E. M. Izhikevich (2003). *Simple model of spiking neurons*. IEEE Transactions on Neural Networks, 14(6), 1569–1572.
+
+
+👥 Authors
+
+Fernanda Selingardi Matias - Original implementation (2012)
+
+Katiele Valéria Pereira Brito - Modifications and extensions (2022)
