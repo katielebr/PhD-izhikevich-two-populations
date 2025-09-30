@@ -95,9 +95,6 @@ PhD-izhikevich-two-populations/
     README.md                      # Documentation
 ```
 
-## 📎 Dependencies
-- **Numerical Recipes** - `ran2` function for pseudo-random number generation.
-
 ## 📋 Input Parameters
 
 | Parameter | Description | Range |
@@ -130,9 +127,72 @@ Example:
 time ./saida.out 0.5 0.0 3.5 0.5 53408123 2.00 0.00
 ```
 
+##🔧 Customizing Neuron Types
+**Location: src/InitialConditions.c - Receiver Population Setup**
+```bash
+for (ii = 0; ii < n1; ii++) {
+    // [...] initialization code
+    
+    if (ii >= n_exc_pop1 * n1) {  // INHIBITORY NEURONS
+        // Fast Spiking (FS) - CURRENTLY ACTIVE
+        a[k][ii] = 0.10;
+        b[k][ii] = 0.20;
+        
+        // Low-Threshold Spiking (LTS) - COMMENTED OUT
+        // a[k][ii] = 0.02;
+        // b[k][ii] = 0.25;
+        
+        // Heterogeneity Model - COMMENTED OUT  
+        // a[k][ii] = 0.06 - Xi + ((0.04 + Xi) * auxrand * auxrand) - ((0.04 - Xi) * auxrand2 * auxrand2);
+        // b[k][ii] = (-5 * a[k][ii] / 8) + 2.1 / 8;
+        
+        c[k][ii] = -65.0;
+        d[k][ii] = 2.0;
+    }
+    else {  // EXCITATORY NEURONS
+        a[k][ii] = 0.02;
+        b[k][ii] = 0.2;
+        
+        // Heterogeneous excitatory neurons
+        c[k][ii] = -55.0 - X + ((5.0 + X) * auxrand * auxrand) - ((10 - X) * auxrand2 * auxrand2);
+        d[k][ii] = 4.0 + Y - ((2.0 + Y) * auxrand * auxrand) + ((4 - Y) * auxrand2 * auxrand2);
+    }
+}
+```
+### Modifications
+To change inhibitory neuron type:
+```bash
+// For Fast Spiking (FS) neurons:
+a[k][ii] = 0.10; b[k][ii] = 0.20;
+
+// For Low-Threshold Spiking (LTS) neurons:  
+a[k][ii] = 0.02; b[k][ii] = 0.25;
+
+// For heterogeneous inhibitory neurons:
+a[k][ii] = 0.06 - Xi + ((0.04 + Xi) * auxrand * auxrand) - ((0.04 - Xi) * auxrand2 * auxrand2);
+b[k][ii] = (-5 * a[k][ii] / 8) + 2.1 / 8;
+```
+To change excitatory neuron type:
+```bash
+// For Intrinsically Bursting (IB):
+c[k][ii] = -55.0; d[k][ii] = 4.0;
+
+// For Chattering (CH):
+c[k][ii] = -50.0; d[k][ii] = 2.0;
+
+// For Regular Spiking (RS):
+c[k][ii] = -65.0; d[k][ii] = 8.0;
+
+// For heterogeneous excitatory neurons:
+c[k][ii] = -55.0 - X + ((5.0 + X) * auxrand * auxrand) - ((10 - X) * auxrand2 * auxrand2);
+d[k][ii] = 4.0 + Y - ((2.0 + Y) * auxrand * auxrand) + ((4 - Y) * auxrand2 * auxrand2);
+```
+
+## 📎 Dependencies
+**Numerical Recipes** - `ran2` function for pseudo-random number generation.
+
 ## 📄 License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 
 ## 📚 References 
 [1] E. M. Izhikevich (2003). *Simple model of spiking neurons*. IEEE Transactions on Neural Networks, 14(6), 1569–1572.
