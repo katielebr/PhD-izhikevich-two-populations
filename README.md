@@ -18,6 +18,7 @@ $$
 $$
 
 Here, \(v\) is the membrane potential, \(u\) is a recovery variable (capturing K\(^+\) activation and Na\(^+\) inactivation), and \(I_{\text{total}}\) aggregates synaptic and external inputs. When \(v \ge 30~\text{mV}\), the reset is applied:
+
 $$
 v \leftarrow c, \qquad u \leftarrow u + d.
 $$
@@ -41,8 +42,6 @@ $$
 $$
 
 Here, \(\sigma\) is sampled independently for each neuron from a uniform distribution \(\sigma \sim \mathcal{U}(0,1)\).  
-
-
 
 ### Neuronal heterogeneity (Receiver population)
 
@@ -70,8 +69,6 @@ Within each population, synapses are **AMPA** onto excitatory neurons and **GABA
 ### External drive and numerical scheme
 
 Each neuron receives external **Poisson** input. Dynamics are integrated with the **explicit Euler** method using a fixed step of \(\Delta t = 0.05~\text{ms}\).
-
----
 
 **Reference**  
 [1] E. M. Izhikevich (2003). *Simple model of spiking neurons*. IEEE Transactions on Neural Networks, 14(6), 1569–1572.
