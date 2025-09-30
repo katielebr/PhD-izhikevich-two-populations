@@ -75,23 +75,25 @@ Each neuron receives external **Poisson** input. Dynamics are integrated with th
 
 ## 🗂️ Project Structure
 
+```
 PhD-izhikevich-two-populations/
-├── src/ # Source files
-│ ├── InitialConditions.c
-│ ├── Connectivity.c
-│ ├── TimeIteration.c
-│ ├── SynapticFunctions.c
-│ ├── Integration.c
-│ ├── SpikeFunctions.c
-│ └── DataAnalysis.c
-├── include/ # Header files
-│ ├── constants.h
-│ ├── functions.h
-│ └── globals.h
-├── main.c # Main program entry point
-├── LICENSE # MIT License
-├── .gitignore            # Git ignore rules
-└── README.md # Documentation
+    src/                           # Source files
+        InitialConditions.c
+        Connectivity.c
+        TimeIteration.c
+        SynapticFunctions.c
+        Integration.c
+        SpikeFunctions.c
+        DataAnalysis.c
+    include/                       # Header files
+        constants.h
+        functions.h
+        globals.h
+    main.c                         # Main program entry point
+    LICENSE                        # MIT License
+    .gitignore                     # Git ignore rules
+    README.md                      # Documentation
+```
 
 ## 📎 Dependencies
 - **Numerical Recipes** - `ran2` function for pseudo-random number generation.
