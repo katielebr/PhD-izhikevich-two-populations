@@ -1,0 +1,23 @@
+# Compiled files
+*.out
+simulator
+*.o
+*.so
+*.a
+
+# Results directory
+results/**
+
+# Data files
+*.dat
+*.txt
+*.csv
+
+# Editor files
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
