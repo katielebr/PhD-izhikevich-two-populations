@@ -1,5 +1,5 @@
 # Izhikevich Two-Population Cortical Model
-**Citation Request**: If you use this code in your research, please cite the article above.
+**Citation Request**: If you use this code in your research, please cite the article.
 ## 📚 Associated Publication
 This code accompanies the following research article:
 ```bibtex
