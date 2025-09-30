@@ -53,14 +53,14 @@ We introduce heterogeneity in both inhibitory and excitatory neurons of the **re
 
 $$
 a = 0.06 - X_i + \big[(0.04 + X_i) - (0.04 - X_i)\big]\sigma^2, \qquad
-b = -0.625\,a + 0.262.
+b = -0.625 a + 0.262.
 $$
 
 **Excitatory neurons** — varied via $X_e$ in the reset parameters:
 
 $$
 c = -55 - X_e + \big[(5 + X_e) - (10 - X_e)\big]\sigma^2, \qquad
-d = -0.4\,c - 18.
+d = -0.4 c - 18.
 $$
 
 $\sigma^2$ controls the variance of the heterogeneity; $X_i$ and $X_e$ set the heterogeneity scale for inhibitory and excitatory cells, respectively.
