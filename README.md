@@ -84,28 +84,25 @@ The model is composed by two cortical populations in a Sender–Receiver configu
 
 In the **sender** population, inhbitory and excitatory neurons have parameters distributed as:
 ```bash
-      for (ii = 0; ii < n0; ii++){
-        t0poisson[k][ii] = 30.0 * 8.0 + 600. * ran2(&seed);
-        syncurE[k][ii] = 0.0;
-        syncurI[k][ii] = 0.0;
-        auxrand = ran2(&seed);
+for (ii = 0; ii < n0; ii++){
+    // [...] initialization code
         if (ii >= n_exc_pop0 * n0){  // population 1 (inhibitory neurons)
-          a[k][ii] = 0.02 + (0.08 * auxrand);
-          b[k][ii] = 0.25 - (0.05 * auxrand);
-          c[k][ii] = -65.0;
-          d[k][ii] = 2.0;
+            a[k][ii] = 0.02 + (0.08 * auxrand);
+            b[k][ii] = 0.25 - (0.05 * auxrand);
+            c[k][ii] = -65.0;
+            d[k][ii] = 2.0;
         }
         else{ // population 1 (excitatory neurons)
-          a[k][ii] = 0.02;
-          b[k][ii] = 0.2;
-          c[k][ii] = -65.0 + (15.0 * auxrand * auxrand);
-          d[k][ii] = 8.0 - (6.0 * auxrand * auxrand);
+            a[k][ii] = 0.02;
+            b[k][ii] = 0.2;
+            c[k][ii] = -65.0 + (15.0 * auxrand * auxrand);
+            d[k][ii] = 8.0 - (6.0 * auxrand * auxrand);
         }
-      }
+}
 ```
 ### Neuronal heterogeneity (Receiver population)
 
-We introduce heterogeneity in both inhibitory and excitatory neurons of the **receiver** population.
+We introduce heterogeneity in both inhibitory and excitatory neurons of the **receiver** population:
 
 ```bash
 for (ii = 0; ii < n1; ii++) {
