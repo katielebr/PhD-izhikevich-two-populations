@@ -10,7 +10,7 @@ The code outputs the time evolution of the **mean membrane potential** for each 
 
 ## 🧠 Model Overview
 
-The model is composed by two cortical populations in a Sender–Receiver configuration. Each population contains \(500\) neurons, with \(80\%\) excitatory and \(20\%\) inhibitory. All neurons follow the standard Izhikevich dynamics [1]:
+The model is composed by two cortical populations in a Sender–Receiver configuration. Each population contains 500 neurons, with $80\%$ excitatory and $20\%$ inhibitory. All neurons follow the standard Izhikevich dynamics [1]:
 
 $$
 \frac{dv}{dt} = 0.04v^2 + 5v + 140 - u + I_{\text{total}}, \qquad
@@ -29,16 +29,17 @@ In the **sender** population, excitatory neurons have parameters distributed as:
 
 $$
 \begin{aligned}
-(a,b) &= (0.02,\, 0.2),\\
-(c,d) &= (-65,\, 8) \;+\; (15,\,-6)\,\sigma^{2},
+(a,b) &= (0.02, 0.2),\\
+(c,d) &= (-65, 8) + (15,-6) \sigma^{2},
 \end{aligned}
 $$
 
 and inhibitory neurons as:
+
 $$
 \begin{aligned}
-(a,b) &= (0.02,\, 0.25) \;+\; (0.08,\,-0.05)\,\sigma,\\
-(c,d) &= (-65,\, 2).
+(a,b) &= (0.02, 0.25) + (0.08, -0.05) \sigma,\\
+(c,d) &= (-65, 2).
 \end{aligned}
 $$
 
@@ -66,7 +67,7 @@ $\sigma^2$ controls the variance of the heterogeneity; $X_i$ and $X_e$ set the h
 
 ### Synaptic coupling
 
-Across populations, coupling is mediated by **AMPA** (excitatory) conductance $g_E$.  
+Across populations, coupling is mediated by **$AMPA$** (excitatory) conductance $g_E$.  
 Within each population, synapses are **$AMPA$** onto excitatory neurons and **$GABA\_A$** onto inhibitory neurons; inhibitory control in the receiver is governed by synaptic conductance $g_I$.
 
 ### External drive and numerical scheme
