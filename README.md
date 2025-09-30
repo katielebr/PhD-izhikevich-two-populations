@@ -1,12 +1,13 @@
 # Izhikevich Two-Population Cortical Model
 
-This repository contains code originally created by **Fernanda Selingardi Matias** and later modified by **Katiele Valéria Pereira Brito** as part of her PhD research. The simulator models two neuronal populations representing cortical areas using the Izhikevich neuron model.
+This repository contains the computational code developed for the PhD research of Katiele Valéria Pereira Brito conducted under a cotutelle agreement between the Federal University of Alagoas (UFAL, Brazil) and the University of the Balearic Islands (UIB, Spain) in 2025. The original codebase was created by Fernanda Selingardi Matias and substantially extended for this research.
 
-The current implementation couples the two populations **unidirectionally** (Sender → Receiver). Within each population, neurons are either **excitatory** or **inhibitory**, allowing us to probe how cell-type composition shapes the dynamics of the receiver population. Synapses include $AMPA$ (excitatory) and $GABA_A$ (inhibitory) conductances, and background activity is driven by **Poisson noise**.
+The simulator implements a two-population cortical network using the Izhikevich neuron model, specifically investigating how inhibitory neuronal variability modulates phase relationships between coupled neural populations.
 
-The code outputs the time evolution of the **mean membrane potential** for each population and provides analysis utilities for these signals, including variability across excitatory and inhibitory neurons.
+The current implementation couples the two populations unidirectionally (Sender → Receiver). Within each population, neurons are either excitatory or inhibitory, allowing us to probe how cell-type composition shapes the dynamics of the receiver population. Synapses include $AMPA$ (excitatory) and $GABA_A$ (inhibitory) conductances, and background activity is driven by Poisson noise.
 
----
+The code outputs the time evolution of the mean membrane potential for each population and provides analysis utilities for these signals, including variability across excitatory and inhibitory neurons.
+
 
 ## 🧠 Model Overview
 
@@ -174,13 +175,13 @@ b[k][ii] = (-5 * a[k][ii] / 8) + 2.1 / 8;
 ```
 To change excitatory neuron type:
 ```bash
-// For Intrinsically Bursting (IB):
+// For Intrinsically Bursting (IB) neurons:
 c[k][ii] = -55.0; d[k][ii] = 4.0;
 
-// For Chattering (CH):
+// For Chattering (CH) neurons:
 c[k][ii] = -50.0; d[k][ii] = 2.0;
 
-// For Regular Spiking (RS):
+// For Regular Spiking (RS) neurons:
 c[k][ii] = -65.0; d[k][ii] = 8.0;
 
 // For heterogeneous excitatory neurons:
@@ -194,11 +195,11 @@ d[k][ii] = 4.0 + Y - ((2.0 + Y) * auxrand * auxrand) + ((4 - Y) * auxrand2 * aux
 ## 📄 License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 📚 References 
+## 🔗 Reference
 [1] E. M. Izhikevich (2003). *Simple model of spiking neurons*. IEEE Transactions on Neural Networks, 14(6), 1569–1572.
 
-To use this code, please cite one of the references below:
-
+## 📚 Associated Publication
+This code accompanies the following research article:
 ```bibtex
 @article{brito2025role,
   title={The role of inhibitory neuronal variability in modulating phase diversity between coupled networks},
@@ -210,8 +211,9 @@ To use this code, please cite one of the references below:
   publisher={AIP Publishing}
 }
 ```
+**Citation Request**: If you use this code in your research, please cite the article above.
+
 ## 👥 Authors
 
 Fernanda Selingardi Matias - Original implementation (2012)
-
 Katiele Valéria Pereira Brito - Modifications and extensions (2022)
