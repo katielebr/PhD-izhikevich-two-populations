@@ -163,16 +163,13 @@ c[k][ii] = -55.0 - X + ((5.0 + X) * auxrand * auxrand) - ((10 - X) * auxrand2 * 
 d[k][ii] = 4.0 + Y - ((2.0 + Y) * auxrand * auxrand) + ((4 - Y) * auxrand2 * auxrand2);
 ```
 
-### Synaptic coupling
+## Synaptic coupling
 
 Across populations, coupling is mediated by **$AMPA$** (excitatory) conductance $g_E$. Within each population, synapses are **$AMPA$** onto excitatory neurons and **$GABA\_A$** onto inhibitory neurons; inhibitory control in the receiver is governed by synaptic conductance $g_I$.
 
-### External drive and numerical scheme
+## External drive and numerical scheme
 
 Each neuron receives external **Poisson** input. Dynamics are integrated with the **explicit Euler** method using a fixed step of $\Delta t = 0.05~\text{ms}$.
-
-## 🔧 Customizing Neuron Types
-**Location**: src/InitialConditions.c - Receiver Population Setup
 
 ## 📎 Dependencies
 **Numerical Recipes** - `ran2` function for pseudo-random number generation.
