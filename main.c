@@ -5,14 +5,14 @@
 //  SYNAPTIC MODEL: Chemical excitatory and inhibitory                               //
 //                                                                                   //
 //  COMPILE: g++ -lm main.c InitialConditions.c Connectivity.c TimeIteration.c SynapticFunctions.c Integration.c SpikeFunctions.c DataAnalysis.c ran2.c -o saida.out		          	                       //
-//  RUN: time ./saida.out gEpoisson Iext gI1 gEext01 seed X Xi     	        //
-//  EX:  time ./saida.out 0.5 0.0 3.5 0.5 53408123 2.00 0.00                         //
-//                                                                                   //
-//  variar X de -5 a 10 e Xi de -0.04 a 0.04                                         //
-//                                                                                   //
-//  Writen by Fernanda S. Matias 2012                                                //
-//  Updated by Katiele Valéria Pereira Brito 2022                                    //
-///////////////////////////////////////////////////////////////////////////////////////
+//  RUN: time ./saida.out gEpoisson Iext gI1 gEext01 seed Xe Xi     	               //
+//  EX:  time ./saida.out 0.5 0.0 3.5 0.5 53408123 2.00 0.00                        //
+//                                                                                  //
+//  variar Xe de -5 a 10 e Xi de -0.04 a 0.04                                       //
+//                                                                                  //
+//  Writen by Fernanda S. Matias 2012                                               //
+//  Updated by Katiele Valéria Pereira Brito 2022                                   //
+//////////////////////////////////////////////////////////////////////////////////////
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -25,7 +25,7 @@
 #include "functions.h"
 #include "constants.h"
 
-double gI1 , gEext01, X,Y,Xi;
+double gI1 , gEext01, Xe,Y,Xi;
 
 void InitialConditions(void);
 void InternalConnectivityMatrix(void);
@@ -102,55 +102,55 @@ int main(int argc, char *argv[])
   gI1 = atof(argv[3]);
   gEext01 = atof(argv[4]);
   seed = atoi(argv[5]);
-  X = atof(argv[6]);
+  Xe = atof(argv[6]);
   Xi = atof(argv[7]);
-  Y = 2 * X / 5;
+  Y = 2 * Xe / 5;
   
   char basefolder[50];
-  sprintf(basefolder, "x%.2f_xi%.5f", X, Xi);
+  sprintf(basefolder, "xe%.2f_xi%.5f", Xe, Xi);
 
   char command[100];
   sprintf(command, "mkdir -p \"%s\"", basefolder);
   system(command);
 
   // Files
-  sprintf(strVmemb, "%s/Zvmedio%.1lf_%.1lf_gI1_%.2lf_gE%.3lf_X%.2lf_Xi%.5lf.dat",basefolder, gEpoisson, Iext, gI1, gEext01, X, Xi);
+  sprintf(strVmemb, "%s/Zvmedio%.1lf_%.1lf_gI1_%.2lf_gE%.3lf_Xe%.2lf_Xi%.5lf.dat",basefolder, gEpoisson, Iext, gI1, gEext01, Xe, Xi);
   remove(strVmemb);
   Vmemb = fopen(strVmemb, "w");
 
-  sprintf(strFiltro, "%s/FiltroZv%.1lf_%.1lf_gI%.3lf_gE%.3lf_X%.2lf_Xi%.5lf.dat",basefolder, gEpoisson, Iext, gI1, gEext01, X, Xi);
+  sprintf(strFiltro, "%s/FiltroZv%.1lf_%.1lf_gI%.3lf_gE%.3lf_X%.2lf_Xi%.5lf.dat",basefolder, gEpoisson, Iext, gI1, gEext01, Xe, Xi);
   remove(strFiltro);
   Filtro = fopen(strFiltro, "w");
 
-  sprintf(strTau, "%s/Tau_%.1lf_%.1lf_gI%.3lf_gE%.3lf_X%.2lf_Xi%.5lf.dat",basefolder, gEpoisson, Iext, gI1, gEext01, X, Xi);
+  sprintf(strTau, "%s/Tau_%.1lf_%.1lf_gI%.3lf_gE%.3lf_Xe%.2lf_Xi%.5lf.dat",basefolder, gEpoisson, Iext, gI1, gEext01, Xe, Xi);
   remove(strTau);
   Tau = fopen(strTau, "w");
 
-  sprintf(strm, "%s/Zm_%.1lf_%.1lf_gI%.3lf_gE%.3lf_X%.2lf_Xi%.5lf.dat",basefolder, gEpoisson, Iext, gI1, gEext01, X, Xi);
+  sprintf(strm, "%s/Zm_%.1lf_%.1lf_gI%.3lf_gE%.3lf_Xe%.2lf_Xi%.5lf.dat",basefolder, gEpoisson, Iext, gI1, gEext01, Xe, Xi);
   remove(strm);
   m = fopen(strm, "w");
 
-  sprintf(strs, "%s/Zs_%.1lf_%.1lf_gI%.3lf_gE%.3lf_X%.2lf_Xi%.5lf.dat",basefolder, gEpoisson, Iext, gI1, gEext01, X, Xi);
+  sprintf(strs, "%s/Zs_%.1lf_%.1lf_gI%.3lf_gE%.3lf_Xe%.2lf_Xi%.5lf.dat",basefolder, gEpoisson, Iext, gI1, gEext01, Xe, Xi);
   remove(strs);
   s = fopen(strs, "w");
 
-  sprintf(strTm, "%s/Tm_%.1lf_%.1lf_gI%.3lf_gE%.3lf_X%.2lf_Xi%.5lf.dat",basefolder, gEpoisson, Iext, gI1, gEext01, X, Xi);
+  sprintf(strTm, "%s/Tm_%.1lf_%.1lf_gI%.3lf_gE%.3lf_Xe%.2lf_Xi%.5lf.dat",basefolder, gEpoisson, Iext, gI1, gEext01, Xe, Xi);
   remove(strTm);
   Tm = fopen(strTm, "w");
 
-  sprintf(strTs, "%s/Ts_%.1lf_%.1lf_gI%.3lf_gE%.3lf_X%.2lf_Xi%.5lf.dat",basefolder, gEpoisson, Iext, gI1, gEext01, X, Xi);
+  sprintf(strTs, "%s/Ts_%.1lf_%.1lf_gI%.3lf_gE%.3lf_Xe%.2lf_Xi%.5lf.dat",basefolder, gEpoisson, Iext, gI1, gEext01, Xe, Xi);
   remove(strTs);
   Ts = fopen(strTs, "w");
 
-  sprintf(strSaida, "%s/GSaida_%.1lf_%.1lf_gI%.3lf_gE%.3lf_X%.2lf_Xi%.5lf.dat",basefolder, gEpoisson, Iext, gI1, gEext01, X, Xi);
+  sprintf(strSaida, "%s/GSaida_%.1lf_%.1lf_gI%.3lf_gE%.3lf_Xe%.2lf_Xi%.5lf.dat",basefolder, gEpoisson, Iext, gI1, gEext01, Xe, Xi);
   remove(strSaida);
   Saida = fopen(strSaida, "w");
 
-  sprintf(strsSaida, "%s/GsSaida_%.1lf_%.1lf_gI%.3lf_gE%.3lf_X%.2lf_Xi%.5lf.dat",basefolder, gEpoisson, Iext, gI1, gEext01, X, Xi);
+  sprintf(strsSaida, "%s/GsSaida_%.1lf_%.1lf_gI%.3lf_gE%.3lf_Xe%.2lf_Xi%.5lf.dat",basefolder, gEpoisson, Iext, gI1, gEext01, Xe, Xi);
   remove(strsSaida);
   sSaida = fopen(strsSaida, "w");
 
-  sprintf(strVaria, "%s/GVariability_%.1lf_%.1lf_gI%.3lf_gE%.3lf_X%.2lf_Xi%.5lf.dat",basefolder, gEpoisson, Iext, gI1, gEext01, X, Xi);
+  sprintf(strVaria, "%s/GVariability_%.1lf_%.1lf_gI%.3lf_gE%.3lf_Xe%.2lf_Xi%.5lf.dat",basefolder, gEpoisson, Iext, gI1, gEext01, Xe, Xi);
   remove(strVaria);
   Varia = fopen(strVaria, "w");
 
