@@ -53,8 +53,8 @@ PhD-izhikevich-two-populations/
 | `gI1` | Inhibitory conductance (receiver) | 0.5 - 9.0 |
 | `gEext01` | Sender→Receiver excitatory conductance | 0.0 - 0.5 |
 | `seed` | Random number generator seed | integer |
-| `X` | Excitatory heterogeneity scale | -5.0 to 10.0 |
-| `Xi` | Inhibitory heterogeneity scale | -0.04 to 0.04 |
+| `$X_e$` | Excitatory heterogeneity scale | -5.0 to 10.0 |
+| `$X_i$` | Inhibitory heterogeneity scale | -0.04 to 0.04 |
 
 ## 🎮 How to Run
 ### 1. Compile the simulator
@@ -68,7 +68,7 @@ g++ -I./include -lm main.c src/*.c -o saida.out
 After compilation, the simulation is r'un with:
 
 ```bash
-time ./saida.out gEpoisson Iext gI1 gEext01 seed X Xi
+time ./saida.out gEpoisson Iext gI1 gEext01 seed Xe Xi
 ```
 Example:
 
@@ -129,7 +129,7 @@ for (ii = 0; ii < n1; ii++) {
         b[k][ii] = 0.2;
         
         // Heterogeneous excitatory neurons
-        c[k][ii] = -55.0 - X + ((5.0 + X) * auxrand * auxrand) - ((10 - X) * auxrand2 * auxrand2);
+        c[k][ii] = -55.0 - Xe + ((5.0 + Xe) * auxrand * auxrand) - ((10 - Xe) * auxrand2 * auxrand2);
         d[k][ii] = 4.0 + Y - ((2.0 + Y) * auxrand * auxrand) + ((4 - Y) * auxrand2 * auxrand2);
     }
 }
@@ -159,7 +159,7 @@ c[k][ii] = -50.0; d[k][ii] = 2.0;
 c[k][ii] = -65.0; d[k][ii] = 8.0;
 
 // For heterogeneous excitatory neurons:
-c[k][ii] = -55.0 - X + ((5.0 + X) * auxrand * auxrand) - ((10 - X) * auxrand2 * auxrand2);
+c[k][ii] = -55.0 - Xe + ((5.0 + Xe) * auxrand * auxrand) - ((10 - Xe) * auxrand2 * auxrand2);
 d[k][ii] = 4.0 + Y - ((2.0 + Y) * auxrand * auxrand) + ((4 - Y) * auxrand2 * auxrand2);
 ```
 
