@@ -309,12 +309,12 @@ void DataAnalysis(void)
   ////////////////////////// FINAL OUTPUT //////////////////////////////
   //////////////////////////////////////////////////////////////////////
 
-  fprintf(Saida, "%lf %lf %lf %lf %lf %lf %lf %lf \n", X, Media_TAU, Sigma_TAU, Media_Tm, gI1, gEext01, gEpoisson, Xi);
+  fprintf(Saida, "%lf %lf %lf %lf %lf %lf %lf %lf \n", Xe, Media_TAU, Sigma_TAU, Media_Tm, gI1, gEext01, gEpoisson, Xi);
   if (Sigma_TAU >= 15.0){
-    fprintf(sSaida, "%lf %lf %lf 1000.0 %lf %lf %lf %lf %lf %lf %lf\n", gI1, gEext01, Media_TAU, Razao, Media_Tm, Sigma_Tm, Media_Ts, Sigma_Ts, Xi, X);
+    fprintf(sSaida, "%lf %lf %lf 1000.0 %lf %lf %lf %lf %lf %lf %lf\n", gI1, gEext01, Media_TAU, Razao, Media_Tm, Sigma_Tm, Media_Ts, Sigma_Ts, Xi, Xe);
   }
   else{
-    fprintf(sSaida, "%lf %lf %lf %lf %lf %lf %lf %lf %lf %lf %lf %lf\n", gI1, gEext01, Media_TAU, Sigma_TAU, Razao, X, gEpoisson, Media_Tm, Sigma_Tm, Media_Ts, Sigma_Ts, Xi);
+    fprintf(sSaida, "%lf %lf %lf %lf %lf %lf %lf %lf %lf %lf %lf %lf\n", gI1, gEext01, Media_TAU, Sigma_TAU, Razao, Xe, gEpoisson, Media_Tm, Sigma_Tm, Media_Ts, Sigma_Ts, Xi);
   }
 
   // Close remaining files
