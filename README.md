@@ -53,8 +53,8 @@ PhD-izhikevich-two-populations/
 | `gI1` | Inhibitory conductance (receiver) | 0.5 - 9.0 |
 | `gEext01` | Sender→Receiver excitatory conductance | 0.0 - 0.5 |
 | `seed` | Random number generator seed | integer |
-| `$X_e$` | Excitatory heterogeneity scale | -5.0 to 10.0 |
-| `$X_i$` | Inhibitory heterogeneity scale | -0.04 to 0.04 |
+| `Xe` | Excitatory heterogeneity scale | -5.0 to 10.0 |
+| `Xi` | Inhibitory heterogeneity scale | -0.04 to 0.04 |
 
 ## 🎮 How to Run
 ### 1. Compile the simulator
