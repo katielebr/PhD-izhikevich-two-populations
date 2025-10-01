@@ -4,9 +4,9 @@
 #define dim 2     	   // neuronal model dimension (4 if HH)
 #define npop 2      	   // # of neuronal populations
 #define n0 500     	   // # of neurons in population 0
-#define n1 500 		   // # of neurons in population 1
-#define itimefinal 960000//38656000//25770666//77312000 //38656000//19328000////96640000  //966400 final itime
-#define it0print 00//38636000	   // initial printing time
+#define n1 500 	   // # of neurons in population 1
+#define itimefinal 960000 //38656000 final itime
+#define it0print 00 	   //38636000	  initial printing time
 #define it0synint 0	   // initial time for internal synapses
 #define it0synext 0       // initial time for external synapses
 #define n_exc_pop0 0.8     // % of excitatory neurons in population 0
