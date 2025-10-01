@@ -55,7 +55,7 @@ void InitialConditions()
           a[k][ii] = 0.02;
           b[k][ii] = 0.2;
           // varying c and d
-          c[k][ii] = -55.0 - X + ((5.0 + X) * auxrand * auxrand) - ((10 - X) * auxrand2 * auxrand2);
+          c[k][ii] = -55.0 - Xe + ((5.0 + Xe) * auxrand * auxrand) - ((10 - Xe) * auxrand2 * auxrand2);
           d[k][ii] = 4.0 + Y - ((2.0 + Y) * auxrand * auxrand) + ((4 - Y) * auxrand2 * auxrand2);
         }
       }
