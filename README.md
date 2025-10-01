@@ -82,7 +82,7 @@ The model is composed by two cortical populations in a Sender–Receiver configu
 
 ### Neuronal heterogeneity (Sender population)
 
-In the **sender** population, inhbitory and excitatory neurons have parameters distributed as:
+In the **sender** population, inhibitory and excitatory neurons have parameters distributed as:
 ```bash
 for (ii = 0; ii < n0; ii++){
     // [...] initialization code
